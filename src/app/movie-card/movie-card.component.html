@@ -6,7 +6,12 @@
     <div class="title fw-bold">{{ movieData.original_title}}</div>
     <div class="d-flex justify-content-between align-items-center">
         <div class="created_at" style="opacity: .5;">{{ movieData.release_date }}</div>
-        <i class="fa-regular fa-heart"></i>
-        <i class="fa-solid fa-heart" style="color: #FFD43B;"></i>
+        <i
+          class="fa fa-heart"
+          [class.fa-regular]="!isInWatchlist()"
+          [class.fa-solid]="isInWatchlist()"
+          [style.color]="isInWatchlist() ? '#FFD43B' : ''"
+          (click)="toggleWatchlist(movieData)">
+        </i>
     </div>
 </div>

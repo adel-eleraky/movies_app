@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { WatchlistService } from '../services/watchlist.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,5 +9,13 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './nav.component.css'
 })
 export class NavComponent {
+  watchlistCount = 0;
 
+  constructor(private watchlistService: WatchlistService) {}
+
+  ngOnInit(): void {
+    this.watchlistService.watchlistCount$.subscribe((count) => {
+      this.watchlistCount = count;
+    });
+  }
 }

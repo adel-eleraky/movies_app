@@ -1,24 +1,28 @@
 import { Component } from '@angular/core';
 import { WatchlistService } from '../services/watchlist.service';
 import { RatingStarsPipe } from '../pipes/rating-stars.pipe';
+import { SlicePipe } from '@angular/common';
 
 @Component({
   selector: 'app-watchlist',
-  imports: [RatingStarsPipe],
+  imports: [RatingStarsPipe, SlicePipe],
   templateUrl: './watchlist.component.html',
   styleUrl: './watchlist.component.css'
 })
 export class WatchlistComponent {
   watchlist: any[] = [];
 
-  constructor(private WatchlistService: WatchlistService) {}
+  constructor(private watchlistService: WatchlistService) {}
 
   ngOnInit() {
-    this.watchlist = this.WatchlistService.getWatchlist();
+    this.watchlistService.watchlist$.subscribe((movies) => {
+      console.log(movies)
+      this.watchlist = movies;
+    });
   }
 
-  removeFromWishlist(itemId: number) {
-    this.WatchlistService.removeFromWishlist(itemId);
-    this.watchlist = this.WatchlistService.getWatchlist();
+  removeFromWatchlist(movieId: number) {
+    this.watchlistService.removeFromWatchlist(movieId);
   }
 }
+

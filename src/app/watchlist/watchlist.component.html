@@ -1,42 +1,40 @@
 <div class="container my-4">
   <h1>Watch list</h1>
   <div class="row">
-    @for(movie of wishlist; track movie.id){
-    <div class="col-md-6 col-lg-4">
-      <div class="card shadow-sm p-3 mb-4 rounded">
-        <div class="row g-0">
+    @for(movie of watchlist; track movie.id){
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="movie-card shadow-sm p-3 rounded">
+        <div class="d-flex">
           <div class="col-md-4">
             <img
-              [src]="movie.image"
-              class="card-img-top rounded-top"
-              alt="Movie poster"
+              [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"
+              alt="{{ movie.original_title }}"
+              class="img-fluid rounded"
+              style="width: 100px; height: 150px;"
             />
           </div>
 
-          <div class="col-md-8">
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-start">
-                <h5 class="card-title mb-0">{{ movie.title }}</h5>
-                <i
-                  class="fa fa-heart text-warning"
-                  style="font-size: 1.5rem;"
-
-                ></i>
-                <!-- (click)="toggleFavorite(movie)" -->
-              </div>
-
-              <span class="text-muted small mb-1">Sep 25, 2017</span>
-              <div class="d-flex align-items-center mb-2">
-                <span [innerHTML]="movie.rating | ratingStars:5"></span>
-                <small class="text-muted ms-2">{{ movie.votes }}</small>
-              </div>
-
-              <p class="card-text text-muted">{{ movie.description }}</p>
+          <div class="ms-3 pt-2">
+            <div class="d-flex justify-content-between align-items-start">
+              <h5 class="fw-bold mb-1">{{ movie.original_title }}</h5>
+              <i
+                class="fa fa-heart text-warning"
+                style="font-size: 1.3rem;"
+                (click)="removeFromWatchlist(movie.id)"
+              ></i>
             </div>
-          </div>
+
+            <span class="small mb-2" style="opacity: .5;">{{ movie.release_date }}</span>
+            <div class="d-flex align-items-center mb-2">
+              <span [innerHTML]="movie.vote_average | ratingStars:5" class="small"></span>
+              <small class="ms-2">{{ movie.vote_average }}</small>
+            </div>
+
+            <p class="small">{{ movie.overview | slice: 0:100 }}...</p>
         </div>
       </div>
     </div>
+  </div>
   }
   </div>
 </div>
