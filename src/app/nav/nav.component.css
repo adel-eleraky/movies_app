@@ -1,0 +1,22 @@
+.navbar {
+background-color: rgba(0, 0, 0, 0.5);
+background-color: rgba(0, 0, 0, 0); 
+color: #ffffff; /* Ensure text is visible */
+transition: background-color 0.3s ease; /* Smooth transition for hover or scroll effects */
+}
+
+.navbar .nav-link {
+color: #ffffff;
+}
+
+.navbar .nav-link:hover {
+color: #cccccc; /* Optional: Lighter hover effect */
+}
+
+.n-brand{
+ color:  rgb(0 204 153) ;
+}
+
+.active_link{
+    color:  rgb(0 204 153) !important
+}
