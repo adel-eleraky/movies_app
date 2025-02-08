@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import '../node_modules/bootstrap/dist/css/bootstrap.min.css'; */
+body {
+    color: #fff;
+    background-color: #181d25;
+    unicode-bidi: embed;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 10px; 
+    height: 10px; 
+    }
+    
+    ::-webkit-scrollbar-track {
+        background-color:  rgb(39 46 58);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+    background: #8595ad; 
+    border-radius: 2px; 
+    }
+  
+    
