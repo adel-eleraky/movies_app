@@ -1,24 +1,33 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WatchlistService {
-  private watchlist: any[] = [];
+  private watchlist = new BehaviorSubject<any[]>([]);
+  watchlist$ = this.watchlist.asObservable();
 
-  constructor() {}
+  private watchlistCount = new BehaviorSubject<number>(0);
+  watchlistCount$ = this.watchlistCount.asObservable();
 
-  getWatchlist() {
-    return this.watchlist;
-  }
-
-  addToWishlist(item: any) {
-    if (!this.watchlist.some((movie) => movie.id === item.id)) {
-      this.watchlist.push(item);
+  addToWatchlist(movie: any){
+    const currentList = this.watchlist.value;
+    if (!currentList.find((m) => m.id === movie.id)) {
+      const updatedList = [...currentList, movie];
+      this.watchlist.next(updatedList);
+      this.watchlistCount.next(updatedList.length);
     }
   }
 
-  removeFromWishlist(itemId: number) {
-    this.watchlist = this.watchlist.filter((movie) => movie.id !== itemId);
+  removeFromWatchlist(movieId: number) {
+    const currentList = this.watchlist.value;
+    const updatedList = currentList.filter((movie) => movie.id !== movieId);
+    this.watchlist.next(updatedList);
+    this.watchlistCount.next(updatedList.length);
+  }
+
+  isInWatchlist(movieId: number): boolean {
+    return !!this.watchlist.value.find((movie) => movie.id === movieId);
   }
 }

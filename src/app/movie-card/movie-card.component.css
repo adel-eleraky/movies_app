@@ -20,3 +20,6 @@
     background-image: linear-gradient( to right, #fbfbfb, #d7dd1a);
 }
 
+.fa-heart{
+  cursor: pointer;
+}
