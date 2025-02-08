@@ -1,1 +1,43 @@
-<p>watchlist works!</p>
+<div class="container my-4">
+  <h1>Watch list</h1>
+  <div class="row">
+    @for(movie of wishlist; track movie.id){
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm p-3 mb-4 rounded">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img
+              [src]="movie.image"
+              class="card-img-top rounded-top"
+              alt="Movie poster"
+            />
+          </div>
+
+          <div class="col-md-8">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start">
+                <h5 class="card-title mb-0">{{ movie.title }}</h5>
+                <i
+                  class="fa fa-heart text-warning"
+                  style="font-size: 1.5rem;"
+
+                ></i>
+                <!-- (click)="toggleFavorite(movie)" -->
+              </div>
+
+              <span class="text-muted small mb-1">Sep 25, 2017</span>
+              <div class="d-flex align-items-center mb-2">
+                <span [innerHTML]="movie.rating | ratingStars:5"></span>
+                <small class="text-muted ms-2">{{ movie.votes }}</small>
+              </div>
+
+              <p class="card-text text-muted">{{ movie.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+  </div>
+</div>
+
