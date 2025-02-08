@@ -1,0 +1,22 @@
+.rating {
+    width: 40px;
+    height: 40px;
+    bottom: 25px;
+    left: 10px;
+    background-color: rgb(39 46 58);
+}
+.rating::before {
+    position: absolute;
+    content: "";
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    border-radius: 50%;
+    z-index: -1;
+}
+.rating.active::before {
+    background-image: linear-gradient( to right, #0099ff, #00cc99);
+}
+.rating.not-active::before {
+    background-image: linear-gradient( to right, #fbfbfb, #d7dd1a);
+}
+
