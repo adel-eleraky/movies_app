@@ -1,0 +1,12 @@
+<div class="movie-card ">
+    <div class="">
+        <img [src]="'https://image.tmdb.org/t/p/w500/' + movieData.poster_path" alt="" class="img-fluid rounded">
+        <div [ngClass]="movieData.vote_average * 10  > 70 ? 'active' : 'not-active' " class="rating rounded-circle d-flex justify-content-center align-items-center position-relative" >{{ movieData.vote_average * 10 | vote }} <span class="position-relative" style="top: -5px; left: 2px; font-size: 9px;">%</span></div>
+    </div>
+    <div class="title fw-bold">{{ movieData.original_title}}</div>
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="created_at" style="opacity: .5;">{{ movieData.release_date }}</div>
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-solid fa-heart" style="color: #FFD43B;"></i>
+    </div>
+</div>
