@@ -28,7 +28,7 @@
               <i
                 class="fa fa-heart text-warning"
                 style="font-size: 1.3rem;"
-                (click)="removeFromWatchlist(movie.id)"
+                (click)="removeFromWatchlist(movie.id); $event.stopPropagation()"
               ></i>
             </div>
 
