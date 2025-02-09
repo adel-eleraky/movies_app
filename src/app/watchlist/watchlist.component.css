@@ -1,13 +1,12 @@
-/* .card {
-  border: none;
-  border-radius: 12px;
+.empty-watchlist {
+  margin-top: 100px;
 }
 
-.card img {
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-} */
+.placeholder-image {
+  width: 300px !important;
+  height: 300px !important;
+  opacity: 0.5;
+}
 
 .fa-heart {
   cursor: pointer;
