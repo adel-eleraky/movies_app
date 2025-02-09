@@ -11,7 +11,7 @@
     @if(watchlist.length > 0){
     @for(movie of watchlist; track movie.id){
     <div class="col-md-6 col-lg-4 mb-4">
-      <div class="movie-card shadow-sm p-3 rounded">
+      <div class="movie-card shadow-sm p-3 rounded" [routerLink]="['/moive-details', movie.id]">
         <div class="d-flex">
           <div class="col-md-4">
             <img
