@@ -14,9 +14,8 @@ export class HeaderComponent {
     constructor(private MovieRequestsService: MovieRequestsService) {}
 
     ngOnInit() {
-        this.MovieRequestsService.getMovies().subscribe(response => {
-            console.log(response)
-            this.moviesData = response.results
-        })
+      this.MovieRequestsService.movies$.subscribe((movies) => {
+        this.moviesData = movies; 
+      });
     }
 }
