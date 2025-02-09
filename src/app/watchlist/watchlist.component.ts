@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { WatchlistService } from '../services/watchlist.service';
 import { RatingStarsPipe } from '../pipes/rating-stars.pipe';
 import { SlicePipe } from '@angular/common';
 
 @Component({
   selector: 'app-watchlist',
-  imports: [RatingStarsPipe, SlicePipe],
+  imports: [RouterLink, RatingStarsPipe, SlicePipe],
   templateUrl: './watchlist.component.html',
   styleUrl: './watchlist.component.css'
 })
