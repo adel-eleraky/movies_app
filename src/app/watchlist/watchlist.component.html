@@ -18,7 +18,6 @@
               [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"
               alt="{{ movie.original_title }}"
               class="img-fluid rounded"
-              style="width: 100px; height: 150px;"
             />
           </div>
 
@@ -34,7 +33,7 @@
 
             <span class="small mb-2" style="opacity: .5;">{{ movie.release_date }}</span>
             <div class="d-flex align-items-center mb-2">
-              <span [innerHTML]="movie.vote_average | ratingStars:5" class="small"></span>
+              <span [innerHTML]="movie.vote_average | ratingStars" class="small"></span>
               <small class="ms-2">{{ movie.vote_average }}</small>
             </div>
 
