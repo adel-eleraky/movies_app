@@ -1,28 +1,39 @@
-<header class=" container my-5">
-    <div class="search-container">
-        <div class="container">
-            <h1 class="app-title">Welcome to our movie app</h1>
-            <p class="app-description">Millions of movies, TV shows and people to discover. Explore now.</p>
+<header class="container my-5">
+  <div class="search-container">
+    <div class="container">
+      <h1 class="app-title">Welcome to our movie app</h1>
+      <p class="app-description">
+        Millions of movies, TV shows and people to discover. Explore now.
+      </p>
 
-            <div class="row g-2 align-items-center">
-                <div class="col-md-10">
-                    <input type="text" class="search-input" placeholder="Search and explore....">
-                </div>
-                <div class="col-md-2">
-                    <button class="search-button w-100">Search</button>
-                </div>
-            </div>
+      <div class="row g-2 align-items-center">
+        <div class="col-md-10">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search and explore...."
+          />
         </div>
+        <div class="col-md-2">
+          <button class="search-button w-100">Search</button>
+        </div>
+      </div>
     </div>
+  </div>
 </header>
 <div class="container" id="movie-list">
+  <div class="row gy-5">
+    @for (movie of moviesData; track $index) {
 
-    <div class="row gy-5">
-        @for (movie of moviesData; track $index) {
-
-            <div class="col-12 col-sm-4 col-md-3 col-lg-2">
-                <app-movie-card [movieData]="movie"></app-movie-card>
-            </div>
-        }
+    <div class="col-12 col-sm-4 col-md-3 col-lg-2">
+      <app-movie-card [movieData]="movie"></app-movie-card>
     </div>
+    }
+  </div>
 </div>
+<div class="p-3 m-3"></div>
+<app-pagination
+  [totalPages]="totalPages"
+  [currentPage]="currentPage"
+  (sendCurrentPage)="getCurrentPage($event)"
+></app-pagination>
