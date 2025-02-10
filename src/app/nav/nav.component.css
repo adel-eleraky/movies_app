@@ -27,7 +27,7 @@ transform: scale(1.1);
 }
 
 .active_link, .nav-link.dropdown-toggle:hover{
-    color:  rgb(0 204 153) !important
+    color:  #88a2ff !important
 }
 
 .dropdown-menu a:hover{

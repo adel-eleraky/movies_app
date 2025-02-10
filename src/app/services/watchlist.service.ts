@@ -5,18 +5,33 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class WatchlistService {
-  private watchlist = new BehaviorSubject<any[]>([]);
+  private watchlist = new BehaviorSubject<any[]>(this.getWatchlistFromStorage());
   watchlist$ = this.watchlist.asObservable();
 
-  private watchlistCount = new BehaviorSubject<number>(0);
+  private watchlistCount = new BehaviorSubject<number>(this.watchlist.value.length);
   watchlistCount$ = this.watchlistCount.asObservable();
 
-  addToWatchlist(movie: any){
+  constructor() {
+    this.watchlist.next(this.getWatchlistFromStorage());
+    this.watchlistCount.next(this.watchlist.value.length);
+  }
+
+  private getWatchlistFromStorage(): any[] {
+    const watchlistJson = localStorage.getItem('watchlist');
+    return watchlistJson ? JSON.parse(watchlistJson) : [];
+  }
+
+  private saveWatchlistToStorage(watchlist: any[]): void {
+    localStorage.setItem('watchlist', JSON.stringify(watchlist));
+  }
+
+  addToWatchlist(movie: any) {
     const currentList = this.watchlist.value;
     if (!currentList.find((m) => m.id === movie.id)) {
       const updatedList = [...currentList, movie];
       this.watchlist.next(updatedList);
       this.watchlistCount.next(updatedList.length);
+      this.saveWatchlistToStorage(updatedList);
     }
   }
 
@@ -25,6 +40,7 @@ export class WatchlistService {
     const updatedList = currentList.filter((movie) => movie.id !== movieId);
     this.watchlist.next(updatedList);
     this.watchlistCount.next(updatedList.length);
+    this.saveWatchlistToStorage(updatedList);
   }
 
   isInWatchlist(movieId: number): boolean {
