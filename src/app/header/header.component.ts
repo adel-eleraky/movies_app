@@ -1,21 +1,51 @@
 import { Component } from '@angular/core';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { MovieRequestsService } from '../services/movie-requests.service';
+import { PaginationComponent } from '../pagination/pagination.component';
 
 @Component({
-    selector: 'app-header',
-    imports: [MovieCardComponent],
-    templateUrl: './header.component.html',
-    styleUrl: './header.component.css'
+  selector: 'app-header',
+  imports: [MovieCardComponent, PaginationComponent],
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent {
+  moviesData: any;
+  lang: string = 'en';
+  totalPages: number = 0;
+  currentPage: number = 1;
+  constructor(private MovieRequestsService: MovieRequestsService) {}
 
-    moviesData: any
-    constructor(private MovieRequestsService: MovieRequestsService) {}
+  ngOnInit() {
+    // this.MovieRequestsService.movies$.subscribe((movies) => {
+    //   this.moviesData = movies.results;
+    //   console.log(movies);
+    //   this.totalPages = movies.total_pages;
+    // });
+    this.MovieRequestsService.getLanguage().subscribe((language) => {
+      this.lang = language;
+      this.fetchProducts();
+    });
+    this.MovieRequestsService.getCurrentPage().subscribe((page) => {
+      this.currentPage = page;
 
-    ngOnInit() {
-      this.MovieRequestsService.movies$.subscribe((movies) => {
-        this.moviesData = movies; 
-      });
-    }
+      this.fetchProducts();
+    });
+    // this.fetchProducts();
+  }
+  getCurrentPage(page: number) {
+    this.currentPage = page;
+    console.log(this.currentPage);
+    this.MovieRequestsService.setCurrentPage(page);
+    this.fetchProducts();
+  }
+  fetchProducts() {
+    this.MovieRequestsService.getMovies(this.lang, this.currentPage).subscribe(
+      (movies) => {
+        this.moviesData = movies.results;
+        console.log(movies);
+        this.totalPages = movies.total_pages;
+      }
+    );
+  }
 }
