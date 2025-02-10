@@ -24,22 +24,22 @@ export class HeaderComponent {
     // });
     this.MovieRequestsService.getLanguage().subscribe((language) => {
       this.lang = language;
-      this.fetchProducts();
+      this.fetchMovies();
     });
     this.MovieRequestsService.getCurrentPage().subscribe((page) => {
       this.currentPage = page;
 
-      this.fetchProducts();
+      this.fetchMovies();
     });
-    // this.fetchProducts();
+    // this.fetchMovies();
   }
   getCurrentPage(page: number) {
     this.currentPage = page;
     console.log(this.currentPage);
     this.MovieRequestsService.setCurrentPage(page);
-    this.fetchProducts();
+    this.fetchMovies();
   }
-  fetchProducts() {
+  fetchMovies() {
     this.MovieRequestsService.getMovies(this.lang, this.currentPage).subscribe(
       (movies) => {
         this.moviesData = movies.results;
