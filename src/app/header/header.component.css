@@ -16,7 +16,7 @@
 }
 
 .search-button {
-    background: linear-gradient(to right, #0099ff, #00cc99);    
+    background: linear-gradient(to right, #5fb9f5, #88a2ff);
     border: none;
     border-radius: 10px;
     padding: 0.8rem 2rem;
@@ -26,8 +26,8 @@
 }
 
 .search-button:hover {
-    background-color: #00cc99;
-    background: linear-gradient(to right, #00cc99, #00cc99);    
+    background-color: #88a2ff;
+    background: linear-gradient(to right, #88a2ff, #88a2ff);
 
 
 }
@@ -47,7 +47,7 @@
     .search-container {
         padding: 2rem 1rem;
     }
-    
+
     .app-title {
         font-size: 2rem;
     }

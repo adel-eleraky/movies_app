@@ -11,7 +11,7 @@
     @if(watchlist.length > 0){
     @for(movie of watchlist; track movie.id){
     <div class="col-md-6 col-lg-4 mb-4">
-      <div class="movie-card shadow-sm p-3 rounded">
+      <div class="movie-card shadow-sm p-3 rounded" [routerLink]="['/moive-details', movie.id]">
         <div class="d-flex">
           <div class="col-md-4">
             <img
@@ -22,13 +22,13 @@
             />
           </div>
 
-          <div class="ms-3 pt-2">
+          <div class="ms-3 pt-lg-2 pt-md-0">
             <div class="d-flex justify-content-between align-items-start">
-              <h5 class="fw-bold mb-1">{{ movie.original_title }}</h5>
+              <h5 class="fw-bold mb-1">{{ movie.title }}</h5>
               <i
                 class="fa fa-heart text-warning"
                 style="font-size: 1.3rem;"
-                (click)="removeFromWatchlist(movie.id)"
+                (click)="removeFromWatchlist(movie.id); $event.stopPropagation()"
               ></i>
             </div>
 
