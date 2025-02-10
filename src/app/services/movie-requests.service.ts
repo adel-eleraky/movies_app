@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -15,12 +16,12 @@ export class MovieRequestsService {
     // return this.getMovies();
   }
 
-  API_KEY: string = 'd6da8520522d81d3a36bfba09dfcbdc6';
+  API_KEY: string = environment.apiKey;
   path = 'http://image.tmdb.org/t/p/w500';
 
   //  https://api.themoviedb.org/3/movie/now_playing
   //  https://api.themoviedb.org/3/movie/${id}
-  getMovies(lang: string, page: number) {
+  getMovies(lang: string = "en", page: number) {
     return this.http.get<any>(
       `https://api.themoviedb.org/3/movie/now_playing`,
       {
