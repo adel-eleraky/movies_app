@@ -9,7 +9,7 @@ import { WatchlistComponent } from './watchlist/watchlist.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,NavComponent,ErrorComponent,HeaderComponent,MovieDetailsComponent,SearchComponent,WatchlistComponent,],
+  imports: [RouterOutlet, NavComponent, ErrorComponent, HeaderComponent, MovieDetailsComponent, SearchComponent, WatchlistComponent,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

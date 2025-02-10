@@ -6,10 +6,11 @@
 
             <div class="row g-2 align-items-center">
                 <div class="col-md-10">
-                    <input type="text" class="search-input" placeholder="Search and explore....">
+                    <input type="text" class="search-input" placeholder="Search and explore...."
+                        [(ngModel)]="searchQuery">
                 </div>
                 <div class="col-md-2">
-                    <button class="search-button w-100">Search</button>
+                    <button class="search-button w-100" (click)="searchMovies()">Search</button>
                 </div>
             </div>
         </div>
@@ -20,9 +21,9 @@
     <div class="row gy-5">
         @for (movie of moviesData; track $index) {
 
-            <div class="col-12 col-sm-4 col-md-3 col-lg-2">
-                <app-movie-card [movieData]="movie"></app-movie-card>
-            </div>
+        <div class="col-12 col-sm-4 col-md-3 col-lg-2">
+            <app-movie-card [movieData]="movie"></app-movie-card>
+        </div>
         }
     </div>
 </div>

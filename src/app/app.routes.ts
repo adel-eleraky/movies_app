@@ -2,12 +2,10 @@ import { Routes } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { ErrorComponent } from './error/error.component';
-import { SearchComponent } from './search/search.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
+import { SearchComponent } from './search/search.component';
 
 export const routes: Routes = [
-
-
     {
         path: '',
         component: HeaderComponent,
@@ -20,19 +18,19 @@ export const routes: Routes = [
         title: 'moive details',
 
     }
-    ,{
-        path: 'Search',
+    , {
+        path: 'search',
         component: SearchComponent,
         title: 'Search',
 
     }
-    ,{
+    , {
         path: 'Watchlist',
         component: WatchlistComponent,
         title: 'Watchlist',
 
     }
-    ,{
+    , {
         path: '**',
         component: ErrorComponent,
         title: 'Error',
