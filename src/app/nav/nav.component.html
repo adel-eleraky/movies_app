@@ -1,13 +1,14 @@
 <nav class="  navbar    navbar navbar-expand-lg ">
     <div class="container">
-      <a class="navbar-brand n-brand" href="#">Movies App</a>
+      <img src="logo1.png" alt="" width="50px">
+      <a class="navbar-brand n-brand ms-2" href="#">Movies App</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse ms-auto" id="navbarNav">
         <ul class="navbar-nav ms-auto ">
           <li class="nav-item">
-            <a class="nav-link active"  routerLink="/" routerLinkActive="active_link">Home</a>
+            <a class="nav-link active"  routerLink="/" routerLinkActive="active_link" [routerLinkActiveOptions]="{exact:true}">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/Search" routerLinkActive="active_link">Search</a>
@@ -24,12 +25,12 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle"  href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Lang
+                {{lang}}
             </a>
-            <ul class="dropdown-menu" >
-              <li (click)="handleLang('en')"><a class="dropdown-item" >En</a></li>
-              <li (click)="handleLang('ar')"><a class="dropdown-item" >Ar</a></li>
-              <li (click)="handleLang('fr')"><a class="dropdown-item" >Fr</a></li>
+            <ul class="dropdown-menu bg-dark" >
+              <li (click)="handleLang('en')"><a class="dropdown-item text-light" >en</a></li>
+              <li (click)="handleLang('ar')"><a class="dropdown-item text-light" >ar</a></li>
+              <li (click)="handleLang('fr')"><a class="dropdown-item text-light" >fr</a></li>
             </ul>
           </li>
 

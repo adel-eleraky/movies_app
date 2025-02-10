@@ -1,22 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 .navbar {
 background-color: rgba(0, 0, 0, 0.5);
-background-color: rgba(0, 0, 0, 0); 
+background-color: rgba(0, 0, 0, 0);
 color: #ffffff; /* Ensure text is visible */
 transition: background-color 0.3s ease; /* Smooth transition for hover or scroll effects */
 }
 
+.navbar-toggler{
+  background-color: #C3CAE4 !important;
+}
+
 .navbar .nav-link {
-color: #ffffff;
+color: #c3cae4d5;
+transition: transform 0.3s;
 }
 
 .navbar .nav-link:hover {
-color: #cccccc; /* Optional: Lighter hover effect */
+/* color: #cccccc;  */
+transform: scale(1.1);
 }
 
 .n-brand{
- color:  rgb(0 204 153) ;
+ color:   #C3CAE4;
+ font-family: "Lobster", serif;
 }
 
-.active_link{
+.active_link, .nav-link.dropdown-toggle:hover{
     color:  rgb(0 204 153) !important
+}
+
+.dropdown-menu a:hover{
+  background-color: #181d25;
 }
