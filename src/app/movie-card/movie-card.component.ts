@@ -2,10 +2,11 @@ import { Component, Input, NgModule } from '@angular/core';
 import { VotePipe } from '../pipes/vote.pipe';
 import { NgClass } from '@angular/common';
 import { WatchlistService } from '../services/watchlist.service';
+import { SlicePipe } from '@angular/common';
 
 @Component({
   selector: 'app-movie-card',
-  imports: [VotePipe ,NgClass],
+  imports: [VotePipe ,NgClass, SlicePipe],
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.css'
 })
