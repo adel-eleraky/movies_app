@@ -38,21 +38,25 @@ export class MovieRequestsService {
   //  https://api.themoviedb.org/3/movie/${id}
 
 
-  getMovieDetails(id: any) {
+  getMovieDetails(id: any,lang: string = "en") {
     console.log("Fetching from API:", id);
     return this.http.get(`https://api.themoviedb.org/3/movie/${id}`,{
         params: {
-            api_key: this.API_KEY
+            api_key: this.API_KEY,
+            language: lang,
+
          
         }
       })
   }
   // https://api.themoviedb.org/3/movie/{movie_id}/recommendations
-  getRecommendations(id: any) {
+  getRecommendations(id: any,lang: string = "en") {
     console.log("Fetching from API:", id);
     return this.http.get(`https://api.themoviedb.org/3/movie/${id}/recommendations`,{
         params: {
-            api_key: this.API_KEY
+            api_key: this.API_KEY,
+            language: lang,
+
          
         }
       })
@@ -60,10 +64,12 @@ export class MovieRequestsService {
 
   // https://api.themoviedb.org/3/movie/${id}/credits
 
-  getCredits(id: any) {
+  getCredits(id: any,lang: string = "en") {
     return this.http.get(`  https://api.themoviedb.org/3/movie/${id}/credits`,{
         params: {
-            api_key: this.API_KEY
+            api_key: this.API_KEY,
+            language: lang,
+
          
         }
       })

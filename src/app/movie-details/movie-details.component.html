@@ -69,9 +69,9 @@
 </section>
 
 
-<div class="container my-5 casts">
+<div class="container my-5 casts" id="movie-list">
     <h2 class="my-2 mt-2">Top Billed Cast:</h2>
-    <div class="row gy-5">
+    <div class="row gy-5 " id="movie-list">
         @for (movie of credits.cast.slice(0, 6); track $index) {
             <div class="col-12 col-sm-4 col-md-3 col-lg-2">
                 <div class="movie-card ">
@@ -89,9 +89,9 @@
 
 
 
-<div class="container my-5">
+<div class="container my-5 ">
     <h2 class="my-2 mt-2">Recommendations :</h2>
-    <div class="row gy-5">
+    <div class="row gy-5" id="movie-list">
         @for (movie of moviesData.results.slice(0, 12); track $index) {
             <div class="col-12 col-sm-4 col-md-3 col-lg-2">
                 <app-movie-card [movieData]="movie"></app-movie-card>

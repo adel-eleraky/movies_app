@@ -22,6 +22,7 @@ export class MovieDetailsComponent {
     moviesData:any;
     trailerKey: string | null = null;
     trailerUrl: SafeResourceUrl | null = null;
+    lang:any='en'
   
 
     constructor(
@@ -39,35 +40,41 @@ export class MovieDetailsComponent {
     console.log(this.activatedRoute)
     this.activatedRoute.params.subscribe(params => {
       const param_id = params['id']
+
+      
+      this.lang=this.MovieRequestsService.getLanguage()
+
+
       this.MovieRequestsService
-      .getMovieDetails(param_id)
+      .getMovieDetails(param_id,this.lang)
       .subscribe((res) => {
         console.log(res);
         this.movie=res
       });
 
 
-     this.MovieRequestsService
-      .getRecommendations(param_id)
-      .subscribe((response) => {
-        console.log(response);
-        this.moviesData=response
-      });
 
 
+      this.MovieRequestsService.getLanguage().subscribe((language) => {
+        this.lang = language;
+        this.fetchMovieDetails(param_id);
+        this.fetchRecommendations(param_id)
+        this.fetchCredits(param_id)
 
 
-      this.MovieRequestsService.getCredits(param_id).subscribe((response) => {
-        console.log(response);
-        this.credits=response;
-      });
+    });
+        console.log(this.lang);
+        
 
-
-      this.MovieRequestsService.getMovies().subscribe(response => {
-        console.log(response)
-        this.moviesData = response.results
-    })
  
+
+
+      // this.MovieRequestsService.getCredits(param_id).subscribe((response) => {
+      //   console.log(response);
+      //   this.credits=response;
+      // });
+
+
 
 
 
@@ -91,5 +98,36 @@ export class MovieDetailsComponent {
       `https://www.youtube.com/embed/${this.trailerKey}`
     );
   }
+
+  fetchMovieDetails(param_id:any){
+
+    this.MovieRequestsService
+    .getMovieDetails(param_id,this.lang)
+    .subscribe((res) => {
+      console.log(res);
+      this.movie=res
+    });
+
+  }
+
+
+  fetchRecommendations(param_id:any){
+  this.MovieRequestsService
+  .getRecommendations(param_id,this.lang)
+  .subscribe((response) => {
+    console.log(response);
+    this.moviesData=response
+  });
+  }
+
+  fetchCredits(param_id:any){
+
+  this.MovieRequestsService.getCredits(param_id,this.lang).subscribe((response) => {
+    console.log(response);
+    this.credits=response;
+  });
+
+  }
+
 
 }
