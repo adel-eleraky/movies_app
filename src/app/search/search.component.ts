@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IMovie } from '../interfaces/imovie';
 import { DatePipe } from '@angular/common';
 import { MovieCardComponent } from "../movie-card/movie-card.component";
+import { MovieRequestsService } from '../services/movie-requests.service';
 
 @Component({
   selector: 'app-search',
@@ -21,7 +22,7 @@ export class SearchComponent {
   currentPage: number = 1;
   totalPages: number = 1;
 
-  constructor(private movieSearchService: SearchService, private router: Router, private activeRoute: ActivatedRoute) { }
+  constructor(private movieSearchService: SearchService, private movieRequestService: MovieRequestsService, private router: Router, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activeRoute.queryParams.subscribe((params) => {
@@ -42,21 +43,24 @@ export class SearchComponent {
     this.loading = true;
     this.error = null;
 
-    this.movieSearchService
-      .searchMovies(this.searchQuery, this.currentPage)
-      .subscribe({
-        next: (data) => {
-          this.searchResults = data.results;
-          console.log(data.results)
-          this.loading = false;
-          this.totalPages = data.total_pages;
-        },
-        error: (error) => {
-          this.error = 'Failed to fetch results.';
-          console.error(error);
-          this.loading = false;
-        },
-      });
+    this.movieRequestService.getLanguage().subscribe(lang => {
+
+      this.movieSearchService
+        .searchMovies(this.searchQuery, this.currentPage , lang)
+        .subscribe({
+          next: (data) => {
+            this.searchResults = data.results;
+            console.log(data.results)
+            this.loading = false;
+            this.totalPages = data.total_pages;
+          },
+          error: (error) => {
+            this.error = 'Failed to fetch results.';
+            console.error(error);
+            this.loading = false;
+          },
+        });
+    })
   }
 
   updateSearch(): void {

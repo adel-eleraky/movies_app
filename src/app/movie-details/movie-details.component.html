@@ -1,1 +1,122 @@
-<p>movie-details works!</p>
+<section class="movie-info">
+    <div class="movie-card mx-auto container h-11 ">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <div class="movie-poster">
+                    <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" alt="Black Widow Poster">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h1 class="mb-0">{{movie.title}}</h1>
+                        <i class="fas fa-heart text-warning"></i>
+                    </div>
+                    <p class="">{{movie.release_date}}</p>
+                    
+                    <div class="mb-3">
+                        <span class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </span>
+                        <span class="ms-2">{{movie.vote_count}}</span>
+                    </div>
+                    
+                    <p class="mb-4 my-5">
+                        {{movie.overview}}
+                    </p>
+                    
+                    <div class="mb-4">
+                        @for (genre of movie.genres; track $index) {
+                            <span class="tag">{{genre.name}}</span>
+                        }
+                  
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <p class="mb-1"><strong>Duration:</strong> {{movie.runtime}} Min.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="mb-1"><strong>Languages:</strong> {{movie.original_language}}
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
+                    <!-- @for (movie of movie.production_companies; track $index) {
+                        <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.logo_path" alt="Black Widow Poster" class="logo">
+
+                    } -->
+
+                    <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.production_companies[0].logo_path" class="logo" alt="Production Company Logo" class="logo">
+
+              
+                    
+                    <div>
+                        <a href="#" [href]="movie.homepage" target="_blank" class="website-btn">
+                            Website <i class="fas fa-external-link-alt ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container my-5 casts" id="movie-list">
+    <h2 class="my-2 mt-2">Top Billed Cast:</h2>
+    <div class="row gy-5 " id="movie-list">
+        @for (movie of credits.cast.slice(0, 6); track $index) {
+            <div class="col-12 col-sm-4 col-md-3 col-lg-2">
+                <div class="movie-card ">
+                    <div class="">
+                    <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.profile_path" alt="" class="img-fluid rounded">
+                    </div>
+                    <div class="title fw-bold">{{ movie.name}}</div>
+                    <div class="created_at" style="opacity: .5;"> character: {{ movie.character}}</div>
+                </div>
+ 
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<div class="container my-5 ">
+    <h2 class="my-2 mt-2">Recommendations :</h2>
+    <div class="row gy-5" id="movie-list">
+        @for (movie of moviesData.results.slice(0, 12); track $index) {
+            <div class="col-12 col-sm-4 col-md-3 col-lg-2">
+                <app-movie-card [movieData]="movie"></app-movie-card>
+            </div>
+        }
+    </div>
+</div>
+
+
+<div class="container my-5">
+
+    @if (trailerUrl) {
+        <div class="trailer-section">
+            <h2>Movie Trailer</h2>
+            <div class="video-container">
+                <iframe
+                    [src]="trailerUrl"
+                    width="700"
+                    height="315"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    }
+
+</div >
+

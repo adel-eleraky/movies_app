@@ -7,6 +7,12 @@
     padding: 3rem 1rem;
     border-radius: 0 0 10px 10px;
     border-radius:  8px;
+
+    /* background-image: url(../assets/shahed2.jpg); */
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
 }
 
 .search-input {
@@ -60,5 +66,4 @@
         margin-top: 1rem;
     }
 }
-
 
