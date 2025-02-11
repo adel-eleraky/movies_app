@@ -3,10 +3,12 @@ import { MovieRequestsService } from '../services/movie-requests.service';
 import { ActivatedRoute } from '@angular/router';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { RatingStarsPipe } from '../pipes/rating-stars.pipe';
+import { WatchlistService } from '../services/watchlist.service';
 
 @Component({
   selector: 'app-movie-details',
-  imports: [MovieCardComponent],
+  imports: [MovieCardComponent, RatingStarsPipe],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css'
 })
@@ -14,7 +16,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
 export class MovieDetailsComponent {
- 
+
     movies: any;
     movie: any ;
     credits:any;
@@ -23,12 +25,13 @@ export class MovieDetailsComponent {
     trailerKey: string | null = null;
     trailerUrl: SafeResourceUrl | null = null;
     lang:any='en'
-  
+
 
     constructor(
       private MovieRequestsService: MovieRequestsService,
       private activatedRoute: ActivatedRoute,
-      private sanitizer: DomSanitizer
+      private sanitizer: DomSanitizer,
+      private watchlistService: WatchlistService
 
 
     ) {
@@ -41,7 +44,7 @@ export class MovieDetailsComponent {
     this.activatedRoute.params.subscribe(params => {
       const param_id = params['id']
 
-      
+
       this.lang=this.MovieRequestsService.getLanguage()
 
 
@@ -64,9 +67,9 @@ export class MovieDetailsComponent {
 
     });
         console.log(this.lang);
-        
 
- 
+
+
 
 
       // this.MovieRequestsService.getCredits(param_id).subscribe((response) => {
@@ -80,7 +83,7 @@ export class MovieDetailsComponent {
 
     this.MovieRequestsService.getMovieVideos(param_id).subscribe((response) => {
       console.log(response);
-      const video = response.results.find((video: any) => 
+      const video = response.results.find((video: any) =>
         video.type === 'Trailer' && video.site === 'YouTube'
       );
       if (video) {
@@ -129,5 +132,17 @@ export class MovieDetailsComponent {
 
   }
 
+
+  toggleWatchlist(movieData: any) {
+    if (this.watchlistService.isInWatchlist(movieData.id)) {
+      this.watchlistService.removeFromWatchlist(movieData.id);
+    } else {
+      this.watchlistService.addToWatchlist(movieData);
+    }
+  }
+
+  isInWatchlist(): boolean {
+    return this.watchlistService.isInWatchlist(this.movie.id);
+  }
 
 }

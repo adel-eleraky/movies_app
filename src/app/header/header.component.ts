@@ -2,13 +2,12 @@ import { Component, inject } from '@angular/core';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { MovieRequestsService } from '../services/movie-requests.service';
 import { Router } from '@angular/router';
-import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { PaginationComponent } from '../pagination/pagination.component';
 
 @Component({
     selector: 'app-header',
-    imports: [MovieCardComponent, FormsModule, PaginationComponent, RouterLink],
+    imports: [MovieCardComponent, FormsModule, PaginationComponent],
     templateUrl: './header.component.html',
     styleUrl: './header.component.css'
 })
