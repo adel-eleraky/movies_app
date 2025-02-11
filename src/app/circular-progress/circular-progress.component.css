@@ -1,0 +1,5 @@
+circle {
+  transition: stroke-dashoffset 0.6s ease-in-out;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}

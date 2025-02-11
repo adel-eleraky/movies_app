@@ -1,0 +1,15 @@
+<svg width="50" height="50" viewBox="0 0 100 100" style="position: relative; bottom: 25px; left: 10px; border-radius: 50%; background-color: #181d25;">
+  <circle cx="50" cy="50" r="40" stroke="#ccc" stroke-width="10" fill="none"></circle>
+  <circle
+    cx="50"
+    cy="50"
+    r="40"
+    [style]="getProgressColor()"
+    stroke-width="10"
+    fill="none"
+    stroke-dasharray="251.2"
+    [attr.stroke-dashoffset]="calculateProgress()"
+    stroke-linecap="round"
+  ></circle>
+  <text x="50" y="50" text-anchor="middle" dy=".3em" font-size="20px" fill="white">{{progress}}%</text>
+</svg>
