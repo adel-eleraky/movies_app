@@ -28,8 +28,14 @@
 .search-button:hover {
     background-color: #88a2ff;
     background: linear-gradient(to right, #88a2ff, #88a2ff);
+}
 
-
+.not-found-result{
+  display: flex ;
+  align-items: center ;
+  justify-content: center ;
+  height: 200px ;
+  color: #C3CAE4 ;
 }
 
 
@@ -43,4 +49,5 @@
         width: 100%;
         margin-top: 1rem;
     }
+
 }

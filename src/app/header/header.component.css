@@ -1,3 +1,7 @@
+.explore-word{
+  color: #88a2ff;
+}
+
 .search-container {
     background-color:  rgb(39 46 58);
     padding: 3rem 1rem;
@@ -39,7 +43,6 @@
 }
 
 .app-description {
-    font-size: 1.1rem;
     margin-bottom: 2rem;
 }
 

@@ -37,7 +37,7 @@
 }
 
 .home-button {
-    background: linear-gradient(to right, #0099ff, #00cc99);    
+    background: linear-gradient(to right, #5fb9f5, #88a2ff);
     border: none;
     border-radius: 10px;
     padding: 0.8rem 2rem;
@@ -47,9 +47,8 @@
 }
 
 .home-button:hover {
-    background-color: #0099ff;
-    background: linear-gradient(to right, #0099ff, #0099ff);    
-
+    background-color: #88a2ff;
+    background: linear-gradient(to right, #88a2ff, #88a2ff);
 }
 
 @media (max-width: 768px) {
@@ -57,7 +56,7 @@
         flex-direction: column;
         text-align: center;
     }
-    
+
     .error-text {
         text-align: center;
     }
@@ -65,11 +64,11 @@
     .error-heading {
         font-size: 36px;
     }
-    
+
     .error-message {
         font-size: 16px;
     }
-    
+
     .error-image {
         max-width: 200px;
     }

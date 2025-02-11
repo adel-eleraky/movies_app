@@ -12,8 +12,14 @@
   cursor: pointer;
 }
 
-.text-warning {
-  color: #ffc107 !important;
+.home-button {
+  background: linear-gradient(to right, #5fb9f5, #88a2ff);
+  color: #fff;
+}
+
+.home-button:hover {
+  background-color: #88a2ff;
+  background: linear-gradient(to right, #88a2ff, #88a2ff);
 }
 
 .movie-card {

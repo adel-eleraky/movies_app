@@ -1,11 +1,11 @@
-<div class="container my-4">
-  <h1>Watch list</h1>
+<div class="container my-5">
+  <h1 class="mb-3">Watch list</h1>
   <div class="row">
     @if(watchlist.length === 0){
     <div class="empty-watchlist text-center">
       <img src="icon _heart_slash.svg" alt="Empty Watchlist" class="placeholder-image">
       <p class="mt-3">No Movies in watch list</p>
-      <button routerLink="/" class="btn btn-warning px-4 rounded-pill">Back to home</button>
+      <button routerLink="/" class="btn home-button px-4 rounded-pill">Back to home</button>
     </div>
     }
     @if(watchlist.length > 0){

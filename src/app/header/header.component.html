@@ -3,7 +3,7 @@
         <div class="container">
             <h1 class="app-title">Welcome to our movie app</h1>
             <p class="app-description">
-                Millions of movies, TV shows and people to discover. Explore now.
+                Millions of movies, TV shows and people to discover, <a href="#movie-list" class="explore-word">Explore now</a>
             </p>
 
             <div class="row g-2 align-items-center">
@@ -22,7 +22,7 @@
     <div class="row gy-5">
         @for (movie of moviesData; track movie.id) {
           @if(movie.poster_path != null){
-        <div class="col-12 col-sm-4 col-md-3 col-lg-2">
+        <div class="col-12 col-sm-4 col-md-3 col-lg-2" [routerLink]="['/moive-details', movie.id]">
             <app-movie-card [movieData]="movie"></app-movie-card>
         </div>
           }

@@ -1,4 +1,4 @@
-<div class="search-container container">
+<div class="search-container container my-5">
 
     <div class="">
         <h6>Search Results for: {{ searchQuery }}</h6>
@@ -18,8 +18,7 @@
     <div>Loading...</div>
     } @else if (error) {
     <div class="error-message">{{ error }}</div>
-    } @else {
-    @if (searchResults.length > 0) {
+    } @else if (searchResults.length > 0) {
     <div class="row gy-5 container my-3">
         @for (movie of searchResults; track movie.id) {
           @if(movie.poster_path != null){
@@ -30,9 +29,9 @@
         }
     </div>
     } @else {
-    <div>No results found.</div>
+    <div class="not-found-result">No results found.</div>
     }
-    }
+
 
     @if (totalPages > 1) {
     <div class="pagination container d-flex justify-content-around align-items-center">
