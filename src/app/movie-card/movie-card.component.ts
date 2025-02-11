@@ -7,7 +7,7 @@ import { CircularProgressComponent } from '../circular-progress/circular-progres
 
 @Component({
   selector: 'app-movie-card',
-  imports: [VotePipe ,NgClass, SlicePipe, CircularProgressComponent],
+  imports: [VotePipe , SlicePipe, CircularProgressComponent],
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.css'
 })
@@ -27,10 +27,5 @@ export class MovieCardComponent {
 
     isInWatchlist(): boolean {
       return this.watchlistService.isInWatchlist(this.movieData.id);
-    }
-
-    getVoteAverage(vote: number): number {
-      console.log(vote)
-      return Math.floor(vote * 10)
     }
 }
