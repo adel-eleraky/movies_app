@@ -19,8 +19,8 @@ export class SearchService {
   // private apiKey = "4c7277e7f1314aaf1afdc60c38f8fd22";
   private http = inject(HttpClient);
 
-  searchMovies(query: string, page: number = 1): Observable<SearchResponse> {
-    const url = `${this.baseUrl}/search/movie?api_key=${this.apiKey}&query=${query}&page=${page}`;
+  searchMovies(query: string, page: number = 1, lang: string = "en"): Observable<SearchResponse> {
+    const url = `${this.baseUrl}/search/movie?api_key=${this.apiKey}&query=${query}&page=${page}&language=${lang}`;
     return this.http.get<SearchResponse>(url);
   }
 

@@ -20,7 +20,7 @@
     <div class="error-message">{{ error }}</div>
     } @else {
     @if (searchResults.length > 0) {
-    <div class="row gy-5 container my-3">
+    <div class="row gy-5 container my-3" id="movie-list">
         @for (movie of searchResults; track movie.id) {
           @if(movie.poster_path != null){
         <div class="col-12 col-sm-4 col-md-3 col-lg-2">
