@@ -1,9 +1,9 @@
 <div class="movie-card " >
     <div class="">
-        <button class="nav-link" 
+        <button class="nav-link"
             (click)="handleRedirectToDetails(movieData.id)"
         >
-            <img [src]="'https://image.tmdb.org/t/p/w500/' + movieData.poster_path" alt="" class="img-fluid rounded">
+            <img [src]="'https://image.tmdb.org/t/p/w500/' + movieData.poster_path" alt="" class="img-fluid rounded" style="height: 250px;">
         </button>
         <!-- <div [ngClass]="movieData.vote_average * 10  > 70 ? 'active' : 'not-active' " class="rating rounded-circle d-flex justify-content-center align-items-center position-relative" >{{ movieData.vote_average * 10 | vote }} <span class="position-relative" style="top: -5px; left: 2px; font-size: 9px;">%</span></div> -->
         <app-circular-progress [progress]="movieData.vote_average * 10 | vote"></app-circular-progress>

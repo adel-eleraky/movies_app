@@ -15,7 +15,12 @@
     </div>
 
     @if (loading) {
-    <div>Loading...</div>
+      <div class="loading-spinner">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p>Loading results...</p>
+      </div>
     } @else if (error) {
     <div class="error-message">{{ error }}</div>
     } @else if (searchResults.length > 0) {
@@ -34,14 +39,11 @@
 
 
     @if (totalPages > 1) {
-    <div class="pagination container d-flex justify-content-around align-items-center">
-        <button class="search-button" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
-            Previous
-        </button>
-        <span>Page {{ currentPage }} of {{ totalPages }}</span>
-        <button class="search-button" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">
-            Next
-        </button>
-    </div>
+      <div class="p-3 m-3"></div>
+      <app-pagination
+        [totalPages]="totalPages"
+        [currentPage]="currentPage"
+        (sendCurrentPage)="goToPage($event)"
+      ></app-pagination>
     }
 </div>

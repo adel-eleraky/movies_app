@@ -6,10 +6,11 @@ import { IMovie } from '../interfaces/imovie';
 import { DatePipe } from '@angular/common';
 import { MovieCardComponent } from "../movie-card/movie-card.component";
 import { MovieRequestsService } from '../services/movie-requests.service';
+import { PaginationComponent } from '../pagination/pagination.component';
 
 @Component({
   selector: 'app-search',
-  imports: [ FormsModule, MovieCardComponent],
+  imports: [ FormsModule, MovieCardComponent, PaginationComponent],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })

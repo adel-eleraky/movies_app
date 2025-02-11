@@ -73,16 +73,17 @@
   <h2 class="my-2 mt-2">Top Billed Cast:</h2>
   <div class="row gy-5 " id="movie-list">
     @for (movie of credits.cast.slice(0, 6); track $index) {
-    <div class="col-12 col-sm-4 col-md-3 col-lg-2">
-      <div class="movie-card ">
-        <div class="">
-          <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.profile_path" alt="" class="img-fluid rounded">
+      @if(movie.profile_path != null){
+      <div class="col-12 col-sm-4 col-md-3 col-lg-2">
+        <div class="movie-card ">
+          <div class="">
+            <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.profile_path" alt="" class="img-fluid rounded">
+          </div>
+          <div class="title fw-bold">{{ movie.name}}</div>
+          <div class="created_at" style="opacity: .5;"> character: {{ movie.character}}</div>
         </div>
-        <div class="title fw-bold">{{ movie.name}}</div>
-        <div class="created_at" style="opacity: .5;"> character: {{ movie.character}}</div>
       </div>
-
-    </div>
+      }
     }
   </div>
 </div>
