@@ -1,4 +1,5 @@
 import { Component, Input, NgModule } from '@angular/core';
+import { RouterLink, RouterLinkActive ,Router} from '@angular/router';
 import { VotePipe } from '../pipes/vote.pipe';
 import { NgClass } from '@angular/common';
 import { WatchlistService } from '../services/watchlist.service';
@@ -7,7 +8,7 @@ import { CircularProgressComponent } from '../circular-progress/circular-progres
 
 @Component({
   selector: 'app-movie-card',
-  imports: [VotePipe , SlicePipe, CircularProgressComponent],
+  imports: [VotePipe , SlicePipe, CircularProgressComponent, RouterLink, RouterLinkActive],
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.css'
 })
@@ -15,7 +16,10 @@ export class MovieCardComponent {
 
     @Input() movieData: any
 
-    constructor(private watchlistService: WatchlistService) {}
+    constructor(
+      private watchlistService: WatchlistService,
+      private router: Router
+    ) {}
 
     toggleWatchlist(movieData: any) {
       if (this.watchlistService.isInWatchlist(movieData.id)) {
@@ -27,5 +31,10 @@ export class MovieCardComponent {
 
     isInWatchlist(): boolean {
       return this.watchlistService.isInWatchlist(this.movieData.id);
+    }
+
+
+    handleRedirectToDetails(id: any) {
+      this.router.navigate(['/moive-details', id]);
     }
 }
