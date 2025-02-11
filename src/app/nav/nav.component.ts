@@ -43,8 +43,12 @@ export class NavComponent {
 
     if (lang === 'ar') {
       document.getElementById('movie-list')!.setAttribute('dir', 'rtl');
+      document.getElementById('movie-details-card')!.setAttribute('dir', 'rtl');
+      document.getElementById('recommend-list')!.setAttribute('dir', 'rtl');
     } else {
       document.getElementById('movie-list')!.setAttribute('dir', 'ltr');
+      document.getElementById('movie-details-card')!.setAttribute('dir', 'ltr');
+      document.getElementById('recommend-list')!.setAttribute('dir', 'ltr');
     }
   }
 }
