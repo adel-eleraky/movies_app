@@ -20,11 +20,12 @@
 </header>
 <div class="container" id="movie-list">
     <div class="row gy-5">
-        @for (movie of moviesData; track $index) {
-
+        @for (movie of moviesData; track movie.id) {
+          @if(movie.poster_path != null){
         <div class="col-12 col-sm-4 col-md-3 col-lg-2">
             <app-movie-card [movieData]="movie"></app-movie-card>
         </div>
+          }
         }
     </div>
 </div>

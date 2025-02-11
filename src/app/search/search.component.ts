@@ -47,6 +47,7 @@ export class SearchComponent {
       .subscribe({
         next: (data) => {
           this.searchResults = data.results;
+          console.log(data.results)
           this.loading = false;
           this.totalPages = data.total_pages;
         },
