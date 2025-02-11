@@ -27,11 +27,15 @@ export class SearchComponent {
 
   ngOnInit(): void {
     this.activeRoute.queryParams.subscribe((params) => {
-      if (params['query']) {
-        this.searchQuery = params['query'];
-        this.currentPage = 1;
-        this.searchMovies();
+
+      if (!params['query'] || params['query'].trim() === '') {
+        this.searchResults = [];
+        return;
       }
+
+      this.searchQuery = params['query'];
+      this.currentPage = 1;
+      this.searchMovies();
     });
   }
 
