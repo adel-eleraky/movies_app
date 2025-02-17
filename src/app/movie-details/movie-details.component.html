@@ -1,5 +1,5 @@
 <section class="movie-info my-5">
-  <div class="movie-card mx-auto container h-11 ">
+  <div class="movie-card mx-auto container h-11 " id="movie-details-card">
     <div class="row g-0">
       <div class="col-md-4">
         <div class="movie-poster">
@@ -70,7 +70,7 @@
 
 
 <div class="container my-5 casts" id="movie-list">
-  <h2 class="my-2 mt-2">Top Billed Cast:</h2>
+  <h2 class="my-2 mt-2">{{ lang== "ar" ? ":طاقم التمثيل" : "Top Billed Cast" }}</h2>
   <div class="row gy-5 " id="movie-list">
     @for (movie of credits.cast.slice(0, 6); track $index) {
       @if(movie.profile_path != null){
@@ -90,8 +90,8 @@
 
 
 
-<div class="container my-5 ">
-  <h2 class="my-2 mt-2">Recommendations :</h2>
+<div class="container my-5 " id="recommend-list">
+  <h2 class="my-2 mt-2">{{lang == "ar" ? "الاقتراحات:" : "Recommendation:" }}</h2>
   <div class="row gy-5" id="movie-list">
     @for (movie of moviesData.results.slice(0, 12); track $index) {
     <div class="col-12 col-sm-4 col-md-3 col-lg-2">

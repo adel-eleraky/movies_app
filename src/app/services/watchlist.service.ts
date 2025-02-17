@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { MovieRequestsService } from './movie-requests.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,9 +12,13 @@ export class WatchlistService {
   private watchlistCount = new BehaviorSubject<number>(this.watchlist.value.length);
   watchlistCount$ = this.watchlistCount.asObservable();
 
-  constructor() {
+  constructor(private movieRequestsService: MovieRequestsService) {
     this.watchlist.next(this.getWatchlistFromStorage());
     this.watchlistCount.next(this.watchlist.value.length);
+
+    this.movieRequestsService.getLanguage().subscribe((lang) => {
+      this.updateWatchlistLanguage(lang);
+    });
   }
 
   private getWatchlistFromStorage(): any[] {
@@ -25,13 +30,32 @@ export class WatchlistService {
     localStorage.setItem('watchlist', JSON.stringify(watchlist));
   }
 
+  private updateWatchlistLanguage(lang: string): void {
+    const currentList = this.watchlist.value;
+    const updatedList = currentList.map((movie) => {
+      this.movieRequestsService.getMovieDetails(movie.id, lang).subscribe((details: any) => {
+        console.log('details',details)
+        movie.title = details.title;
+        movie.overview = details.overview;
+      });
+      return movie;
+    });
+    this.watchlist.next(updatedList);
+  }
+
   addToWatchlist(movie: any) {
     const currentList = this.watchlist.value;
     if (!currentList.find((m) => m.id === movie.id)) {
-      const updatedList = [...currentList, movie];
-      this.watchlist.next(updatedList);
-      this.watchlistCount.next(updatedList.length);
-      this.saveWatchlistToStorage(updatedList);
+      this.movieRequestsService.getLanguage().subscribe((lang) => {
+        this.movieRequestsService.getMovieDetails(movie.id, lang).subscribe((details: any) => {
+          movie.title = details.title;
+          movie.overview = details.overview;
+          const updatedList = [...currentList, movie];
+          this.watchlist.next(updatedList);
+          this.watchlistCount.next(updatedList.length);
+          this.saveWatchlistToStorage(updatedList);
+        });
+      });
     }
   }
 
