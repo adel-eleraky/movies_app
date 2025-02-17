@@ -1,4 +1,12 @@
-.page-link{
+.page-link {
   background-color: transparent;
   color: #fff;
+}
+li {
+  border-radius: 7px;
+  margin: 0 3px;
+}
+.active button {
+  background-color: #17c6db;
+  color: black;
 }
